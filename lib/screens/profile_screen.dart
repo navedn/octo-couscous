@@ -8,6 +8,18 @@ class ProfileScreen extends StatefulWidget {
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
+class Profile {
+  String name;
+  List<String> appsToBlock;
+  DateTimeRange blockingPeriod;
+
+  Profile({
+    required this.name,
+    required this.appsToBlock,
+    required this.blockingPeriod,
+  });
+}
+
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
