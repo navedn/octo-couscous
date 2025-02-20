@@ -1,3 +1,4 @@
+import 'package:app_blocker/screens/create_profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -15,7 +16,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text('Profiles'),
         actions: [
           IconButton(
-              onPressed: DoNothingAction.new, icon: const Icon(Icons.add))
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CreateProfileScreen()),
+              );
+            },
+          )
         ],
       ),
       body: Column(
@@ -36,9 +44,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   SizedBox(width: 10), // Sets space between the buttons
                   ElevatedButton(
-                    child: Text('Reset'),
+                    child: Text('Create'),
                     onPressed: () {
-                      setState(() {});
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CreateProfileScreen()),
+                      );
                     },
                   ),
                 ],
