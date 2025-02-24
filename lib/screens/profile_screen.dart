@@ -1,7 +1,6 @@
 import 'package:app_blocker/main.dart';
 import 'package:app_blocker/screens/create_profile_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:app_blocker/models/profile.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -66,7 +65,9 @@ class ProfileScreen extends ConsumerWidget {
                   trailing: IconButton(
                     icon: const Icon(Icons.delete),
                     onPressed: () {
-                      ref.read(profileProvider.notifier).removeProfile(profile);
+                      ref
+                          .read(profileProvider.notifier)
+                          .removeProfile(profile.id!);
                     },
                   ),
                 );

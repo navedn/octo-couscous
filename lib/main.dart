@@ -1,3 +1,4 @@
+import 'package:app_blocker/models/database_helper.dart';
 import 'package:flutter/material.dart';
 import 'screens/profile_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,14 +13,25 @@ void main() {
 }
 
 class ProfileNotifier extends StateNotifier<List<Profile>> {
-  ProfileNotifier() : super([]);
+  final DatabaseHelper _dbHelper = DatabaseHelper();
 
-  void addProfile(Profile profile) {
-    state = [...state, profile];
+  ProfileNotifier() : super([]) {
+    loadProfiles();
   }
 
-  void removeProfile(Profile profile) {
-    state = state.where((p) => p != profile).toList();
+  Future<void> loadProfiles() async {
+    final profiles = await _dbHelper.getProfiles();
+    state = profiles;
+  }
+
+  Future<void> addProfile(Profile profile) async {
+    await _dbHelper.insertProfile(profile);
+    loadProfiles(); // Reload profiles from the database
+  }
+
+  Future<void> removeProfile(int id) async {
+    await _dbHelper.deleteProfile(id);
+    loadProfiles(); // Reload profiles from the database
   }
 }
 

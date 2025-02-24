@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'profile.dart'; // Import the Profile model
+import 'package:app_blocker/models/profile.dart';
 
 class CreateProfileScreen extends StatefulWidget {
   const CreateProfileScreen({super.key});
