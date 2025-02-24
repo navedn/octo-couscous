@@ -1,5 +1,5 @@
-import 'package:app_blocker/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
+import 'profile.dart'; // Import the Profile model
 
 class CreateProfileScreen extends StatefulWidget {
   const CreateProfileScreen({super.key});
@@ -42,7 +42,6 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
         appsToBlock: _appsController.text.split(','),
         blockingPeriod: _blockingPeriod!,
       );
-      // Save the profile (e.g., using a state management solution)
       Navigator.pop(context, profile);
     }
   }
@@ -72,7 +71,7 @@ class _CreateProfileScreenState extends State<CreateProfileScreen> {
               TextFormField(
                 controller: _appsController,
                 decoration: const InputDecoration(
-                  labelText: 'Apps to Block',
+                  labelText: 'Apps to Block (comma-separated)',
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
